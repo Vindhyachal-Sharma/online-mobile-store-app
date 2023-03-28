@@ -1,0 +1,45 @@
+.card-top{
+
+    display: flex;
+    flex-direction: column;
+    min-width:0;
+
+    word-wrap: break-word;
+    background: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: .25rem;
+}
+
+.item img{
+    width: 64px;
+}
+
+.item{
+    margin: 1px 2px;
+    text-align: center;
+}
+
+.item a:hover{
+    color:blue;
+}
+
+.card{
+    padding: 2px ;
+    margin: 0 ;
+    margin-bottom: 3px;
+
+}
+
+.card img{
+    width: 190px;
+    height: 180px;
+    align-items: center;
+    margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
+}
+
+.card img:hover{
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+}

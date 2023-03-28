@@ -1,0 +1,17 @@
+<app-display-categories></app-display-categories>
+
+  <div class="container">
+  <div class="row">
+      <ng-container *ngFor="let item of productList|search:customerService.query">
+          <div class="card col-md-3 col-sm-2 align-items-center">
+              <img class="align-items-center" (click)="gotoDetails(item.mobileId)" src="https://m.media-amazon.com/images/I/41S59W1mu6S._SY300_SX300_.jpg" alt="Mobile Image to be added in future ">
+              <h5 style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:30ch">{{item.mobileName}}</h5>
+              <p style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:30ch">{{item.companyName+" "+item.modelNumber}}</p>
+              <p style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:30ch">{{item.description}}</p>
+              <p><strong>Price:</strong><i class="fa fa-inr" aria-hidden="true"></i>{{item.mobileCost}}</p>
+              <button class="btn btn-primary " (click)=addtocart(item.mobileId)><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; Add to cart</button>
+
+          </div>
+      </ng-container>
+   </div>
+</div>

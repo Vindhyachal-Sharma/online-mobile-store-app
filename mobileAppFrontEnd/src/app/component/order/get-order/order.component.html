@@ -1,0 +1,98 @@
+<div class="container justify-content-center"*ngIf="orderList.length> 0">
+  <div class="col-lg-max mt-4 mt-lg-0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class=" table-responsive mb-0 bg-white p-4
+          shadow-sm">
+          <table class="table mb-0">
+            <thead>
+              <tr>
+                <th colspan="7" style="text-align:center;
+                  font-weight:bold;font-size:22px;">Order List</th>
+              </tr>
+              <tr>
+                <th>Order Id</th>
+                <th>Order Date</th>
+                <th>Order List</th>
+                <th>Total Cost</th>
+                <th>Order Status</th>
+                <th class="text-center">Payment</th>
+                <th class="action text-center">Order Action</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let order of orderList|search:customerService.query">
+              <tr>
+
+                <td class=" text-center">
+                  {{order.id}}</td>
+                <td>{{order.orderDate}}</td>
+                <td >
+                  <button class=" rounded-3 btn-warning text-center"
+                    (click)="goToOrder(order.id)"> Order List</button>
+                </td>
+                <!-- <td *ngIf="order.mobiles.length==1">
+                  <tr *ngFor="let mob of order.mobiles">
+
+                        <td> {{mob.mobileName}}</td>
+                    </tr>
+                </td> -->
+
+                <td>{{order.cost}}</td>
+                <td>{{order.orderStatus }}</td>
+                <td>
+                  <button class=" rounded-3 btn-warning"
+                    (click)="viewPaymentDetails((order.payment!.paymentId),(order.cost))">Details</button>
+                </td>
+
+                <td>
+                  <tr>
+                    <td>
+                      <button
+                        *ngIf="(order.orderStatus=='PLACED'||order.orderStatus=='PARTIALLY_CANCELLED')
+                        "class="
+                        rounded-3 btn-danger" (click)="cancelOrder(order.id)">Cancel
+                        Order</button>
+                    </td>
+                    <td>
+                      <button class=" rounded-3 btn-success"
+                        (click)="viewDetails(order.id)">View Details</button>
+                    </td>
+                  </tr>
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="orderList.length == 0">
+  <div class="card" style=" height: 80vh;
+    margin: 25px;
+    padding: 25px;">
+    <h5 class="cart-title">My Orders</h5>
+
+    <div class="center"
+      style=" text-align: center;">
+      <img
+        src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+        alt=""
+        style="text-decoration: none; color: inherit;border:
+        none;outline: none; height:162px; width:250px; margin:20px
+        0px;">
+      <h4 style="font-weight: 400;"> No Order To show!</h4>
+      <h6 style="font-weight: 400;">Place Orders Now</h6>
+      <button routerLink="/products" class="btn btn-primary"
+        style="font-size: 14px !important; margin-top: 20px !important;
+        font-weight: 400; padding: 12px 72px; border-radius: 3px
+        !important;">
+        Shop Now</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+
+
+	<div class="card p-4">
+
+		<div class="d-flex justify-content-between align-items-center">
+
+			<h5 class="total-amount">Total amount</h5>
+			<div class="amount-container"><span class="amount-text"><span>Rs </span>{{cost}}</span></div>
+
+		</div>
+
+
+		<div class="pt-4">
+
+			<div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="paymentMode">Payment mode</label>
+                        <input class="form-control" id="paymentMode" value="{{payment.paymentMode}}" disabled>
+
+                      </div>
+                </div>
+            </div>
+		</div>
+        <div class="row" >
+          <div class="col-sm-12">
+            <div class="form-group">
+                <label for="paymentMode">Payment Status</label>
+                <select class="form-control" id="paymentMode" [(ngModel)]="payment.paymentStatus"  >
+                  <option value="PAID">PAID</option>
+                  <option value="PENDING" disabled>PENDING</option>
+                  <option value="REVERSED" >REVERSED</option>
+                  <option value="PARTAILLY_REVERSED" disabled>PARTAILLY_REVERSED</option>
+                  <option value="RETURNED">RETURNED</option>
+                </select>
+              </div>
+        </div>
+        </div>
+
+
+		<div class="d-flex justify-content-between pt-5 align-items-center">
+
+			<button type="button" class="btn cancel-btn" [mat-dialog-close]="true">Cancel</button>
+
+			<button type="button" class="btn payment-btn"(click)="updatePayment()">Update Payment</button>
+
+		</div>
+
+
+
+
+	</div>
+

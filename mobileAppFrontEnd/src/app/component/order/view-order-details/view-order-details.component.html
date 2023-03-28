@@ -1,0 +1,35 @@
+
+
+<div class="bg-pay p-3"> <span class="font-weight-bold">Order Receipt</span>
+  <div class="d-flex justify-content-between mt-2"> <span class="fw-500">OrderStatus
+    </span> <span>{{order.orderStatus}}</span> </div>
+  <div class="d-flex justify-content-between mt-2"> <span class="lh-16
+      fw-500 ">Address <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
+  </div>
+  <div class="d-flex justify-content-between mt-2"> <span class="lh-16
+      fw-500 text-success">{{order.orderAddress}}</span>
+  </div>
+
+  <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Order
+      Id
+    </span> <span>{{order.id}}</span> </div>
+  <div class="d-flex justify-content-between mt-2"> <span class="lh-16
+      fw-500">Quantity</span>
+    <span>{{order.quantity}}</span> </div>
+
+  <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Amount
+      Deductible</span> <span><i class="fa fa-inr" aria-hidden="true"></i>{{order.cost}}</span>
+  </div>
+  <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Shipping</span>
+    <span>+<i class="fa fa-inr" aria-hidden="true"></i> 0.0</span> </div>
+  <!-- <hr>
+        <div class="d-flex justify-content-between mt-2"> <span class="lh-16
+                fw-500">Total Deductible</span>
+            <span><i class="fa fa-inr" aria-hidden="true"></i>{{order.cost}}</span> </div>
+        -->
+  <hr>
+
+  <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Total
+    </span> <span class="text-success"><i class="fa fa-inr" aria-hidden="true"></i>
+      {{order.cost}}</span> </div>
+</div>

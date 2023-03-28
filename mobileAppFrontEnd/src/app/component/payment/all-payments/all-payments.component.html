@@ -1,0 +1,73 @@
+
+<div class="container justify-content-center"*ngIf="orderList.length> 0">
+  <div class="col-lg-max mt-4 mt-lg-0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="user-dashboard-info-box table-responsive mb-0
+          bg-white p-4
+          shadow-sm">
+          <table class="table manage-candidates-top mb-0">
+            <thead>
+              <tr>
+                <th colspan="6" style="text-align:center;
+                  font-weight:bold;font-size:22px;">Payment List</th>
+
+              </tr>
+              <tr>
+
+                <th>Payment Id</th>
+                <th>Payment Date </th>
+                <th>Total Cost</th>
+                <th>Payment Mode</th>
+                <th>Payment Status</th>
+                <th *ngIf="user.isAdmin()">Action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let order of orderList|search:customerService.query">
+              <tr class="candidates-list">
+                <td>{{order.payment!.paymentId}}</td>
+                <td>{{order.orderDate}}</td>
+                <td>{{order.cost}}</td>
+                <td>{{order.payment!.paymentMode}}</td>
+                <td>{{order.payment!.paymentStatus}}</td>
+                <td>
+
+                  <button *ngIf="user.isAdmin()==true" class=" rounded-3
+                    btn-warning"
+                    (click)="updatePayment(order.payment!.paymentId,order.cost)">Update</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="orderList.length == 0">
+  <div class="card" style=" height: 80vh;
+    margin: 25px;
+    padding: 25px;">
+    <h5 class="cart-title">My Payment</h5>
+
+    <div class="center"
+      style=" text-align: center;">
+      <img
+        src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+        alt=""
+        style="text-decoration: none; color: inherit;border:
+        none;outline: none; height:162px; width:250px; margin:20px
+        0px;">
+      <h4 style="font-weight: 400;"> No Paymnets To show!</h4>
+      <h6 style="font-weight: 400;">Place Orders Now</h6>
+      <button routerLink="/products" class="btn btn-primary"
+        style="font-size: 14px !important; margin-top: 20px !important;
+        font-weight: 400; padding: 12px 72px; border-radius: 3px
+        !important;">
+        Shop Now</button>
+    </div>
+  </div>
+</div>

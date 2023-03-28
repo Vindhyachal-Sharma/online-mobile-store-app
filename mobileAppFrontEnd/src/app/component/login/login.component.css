@@ -1,0 +1,27 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+#agree-to-terms:checked + #submit {
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  outline: none;
+}
+
+#submit[disabled] {
+  background-color: gray;
+  color: white;
+  border: none;
+  cursor: not-allowed;
+  pointer-events: none;
+  outline: none;
+}

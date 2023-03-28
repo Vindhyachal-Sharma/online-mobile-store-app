@@ -1,0 +1,26 @@
+<section class="py-5">
+    <div class="container ">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" src="https://m.media-amazon.com/images/I/41S59W1mu6S._SY300_SX300_.jpg" alt="Mobile Image to be added in future " /></div>
+            <div class="col-md-6">
+
+                <h1 class="display-5 fw-bolder">{{mobile.mobileName}}</h1>
+                <div class="fs-5 mb-5">
+                    <span><i class="fa fa-inr" aria-hidden="true"></i>{{mobile.mobileCost}}</span>
+
+                </div>
+                <p class="lead">{{mobile.mfd}}</p>
+                <p class="lead">{{mobile.companyName+" "+mobile.modelNumber}}</p>
+                <p class="lead">{{mobile.description}}</p>
+                <div class="d-flex">
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                    <button class="btn btn-primary " (click)=addtocart(mobile.mobileId)><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr>
+<h2 class="text-center">Related Products</h2>
+<hr>
+<app-products></app-products>
