@@ -1,0 +1,132 @@
+<div class="container">
+  <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="tab-register" data-mdb-toggle="pill"
+        role="tab"
+        aria-controls="pills-register" aria-selected="true">Add a new Admin</a>
+    </li>
+
+
+  </ul>
+  <div class="tab-pane fade show active" id="registration-form"
+    role="tabpanel">
+    <form class="from-group was-validated" [formGroup]="adminRegister">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="registerName">Name</label>
+          <input type="text" id="name" name="name" class="form-control"
+            placeholder="Name" formControlName="name" required>
+
+          <div *ngIf=" getControl('name')&&
+            getControl('name')!.touched||getControl('name')!.dirty ">
+            <div *ngIf="getControl('name') && getControl('name')!.invalid"
+              class="text-right text-danger">
+              Name is required.</div>
+              <div *ngIf="getControl('name') &&
+              getControl('name')!.hasError('pattern')
+              "class="text-right text-danger">Invalid Name:Name may only contain letters.</div>
+          </div>
+        </div>
+
+        <!-- Username input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="registerUsername">Username</label>
+          <input type="text" class="form-control" placeholder="Username"
+            formControlName="userName" required>
+          <div *ngIf=" userName && userName.touched||userName!.dirty ">
+            <div *ngIf="userName && userName.invalid" class="text-right
+              text-danger">
+              User name is required.</div>
+            <div *ngIf="userName && userName.hasError('pattern')
+              "class="text-right text-danger">
+              Username may only contain alphanumeric characters,
+              underscores, and hyphens and must be minimum 3 digits</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row ">
+        <!-- Email input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="registerEmail">Email</label>
+          <input type="email" class="form-control" placeholder="Email"
+            formControlName="email" required>
+
+          <div *ngIf=" getControl('email')&&
+            getControl('email')!.touched||getControl('email')!.dirty ">
+            <div *ngIf="getControl('email') &&
+              getControl('email')!.invalid"
+              class="text-right text-danger">
+              Email is required.</div>
+              <div *ngIf="getControl('email') &&
+              getControl('email')!.hasError('pattern')
+              "class="text-right text-danger">Invalid Email.</div>
+          </div>
+        </div>
+
+
+        <!-- Mobile Number input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="registerMobNo">Mobile No</label>
+          <input type="phone" class="form-control"
+            placeholder="Mobile Number" formControlName="mobileNo" required>
+          <div *ngIf=" getControl('mobileNo')&&
+            getControl('mobileNo')!.touched||getControl('mobileNo')!.dirty
+            ">
+
+            <div *ngIf="getControl('mobileNo') &&
+              getControl('mobileNo')!.invalid" class="text-right
+              text-danger">
+              Please enter a valid mobile number.</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row ">
+        <!-- Password input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="Password">Password</label>
+          <input type="password" class="form-control" placeholder="Password"
+            formControlName="password" required>
+          <div *ngIf=" getControl('password')&&
+            getControl('password')!.touched||getControl('password')!.dirty">
+            <div *ngIf="getControl('password') &&
+              getControl('password')!.invalid" class="text-right text-danger">
+              Password is required.</div>
+            <div *ngIf="getControl('password') &&
+              getControl('password')!.hasError('pattern')
+              "class="text-right text-danger">Password must contain at least one
+              digit, one lowercase, one uppercase letter, one special symbol
+              (@#$%^&+=) and no whitespace.</div>
+          </div>
+        </div>
+
+        <!--Confirm Password-->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="confirm-password">Confirm password</label>
+          <input type="password" class="form-control"
+            placeholder="Confirm Password"
+            formControlName="confirmPassword" required>
+          <div *ngIf=" getControl('confirmPassword')&&
+            getControl('confirmPassword')!.touched||getControl('confirmPassword')!.dirty
+            ">
+
+            <div *ngIf="getControl('confirmPassword') &&
+              getControl('confirmPassword')!.invalid" class="text-right
+              text-danger">
+              Confirm Password is required.</div>
+            <div *ngIf="getControl('confirmPassword') &&
+              adminRegister.hasError('notSame')" class="text-right text-danger">
+              Password doesn't match.</div>
+
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary px-4"
+          (click)="
+          registerAdmin()"[disabled]="adminRegister.invalid">Register</button>
+      </div>
+
+    </form>
+  </div>
