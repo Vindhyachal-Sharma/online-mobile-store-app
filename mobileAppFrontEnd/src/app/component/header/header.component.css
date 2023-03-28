@@ -1,0 +1,63 @@
+.form-control{
+    border-radius: 3px;
+    width: 600px;
+    margin-left: 20px;
+    border-color:black;
+}
+
+  header {
+    background-color: #f2f2f2;
+    /* padding: 10px; */
+    text-align: center;
+  }
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+
+
+  nav ul li:hover {
+    background-color: #b0c4de;
+    text-decoration-color: aqua;
+  }
+
+  nav ul li a {
+    display: block;
+    /* padding: 10px; */
+    color: #000;
+    text-decoration: none;
+  }
+
+  nav ul .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f2f2f2;
+    z-index: 1;
+    min-width: px;
+  }
+
+
+  nav ul .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  nav ul .dropdown-content li {
+    display: block;
+  }
+
+  nav ul .dropdown-content li a {
+    /* padding: 10px; */
+    color: #000;
+    text-decoration: none;
+  }
+
+  nav ul .dropdown-content li a:hover {
+    background-color: #b0c4de;
+    color: #000;
+  }
+
+
+

@@ -1,0 +1,119 @@
+<header class=" pt-2 text-center bg-primary pb-2" *ngIf="!(user.isAdmin())">
+  <div class="container">
+    <div class="row gy-3">
+      <!-- Left elements -->
+      <div class="align items-start">
+        <a href="" target="_blank" class="float-start">
+          <h1 class="d-md-block mb-0 text-white ">Online Mobile Store
+            App</h1>
+        </a>
+      </div>
+      <div class="col-lg-12 col-md-5 col-12 ">
+        <div class="input-group   align-items-center">
+          <input type="search" class="form-control"
+            [(ngModel)]="customerService.query"
+            placeholder="Search"/>
+          <div class="ps-3 d-flex justify-content-end">
+            <a routerLink="home"
+              class="me-2 bg-light border rounded py-1 px-3 nav-link d-flex
+              align-items-center "> <i class="fa fa-home m-1 me-md-2"></i>
+              <p class="d-none d-md-block mb-0">Home</p>
+            </a>
+
+            <a routerLink="login"
+              class=" me-1 bg-light border rounded py-1 px-3 nav-link d-flex
+              align-items-center" *ngIf="!(user.isLogged|async)"> <i
+                class="fas fa-user-alt m-1
+                me-md-2"></i><p class="d-none d-md-block mb-0">Log in</p>
+            </a>
+            <nav id="myaccount" *ngIf="user.isLogged|async as isLogged"
+              class=" me-1 bg-light border rounded py-1 px-3 nav-link
+              d-flex collapse navbar-collapse
+              align-items-center ">
+              <ul>
+                <li class="dropdown"><a style="color:rgba(0, 72, 255, 0.801)"><i
+                      class="fa fa-bars m-1 me-md-2"></i>My Account</a>
+                  <ul class="dropdown-content">
+                    <li class="ps-3 pe-3 pt-2 pb-1"><a routerLink="profile">My
+                        Profile</a></li>
+                    <li class="ps-3 pe-3 pt-2 pb-1"><a routerLink="orderList">My
+                        Orders</a></li>
+                    <li class="ps-3 pe-3 pt-2 pb-1"><a routerLink="allPayments">My
+                        Payments</a></li>
+                    <!-- <li class="ps-3 pe-3 pt-2 pb-1"><a (click)="user.logout()">Logout</a></li> -->
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+            <a routerLink="cart"
+              class=" me-2 bg-light border rounded py-1 px-3 nav-link d-flex
+              align-items-center"> <i class="fas
+                fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block
+                mb-0">Cart</p>&nbsp;&nbsp;
+              <span class="badge bg-danger top-0 end-0"
+                *ngIf="user.isLogged|async as
+                isLogged">{{totalItem}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- admin header -->
+<nav class="navbar navbar-expand-md bg-primary navbar-dark"
+  *ngIf="user.isAdmin()">
+  <a class="navbar-brand" routerLink="adminHome">Admin Dashboard</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <input type="search" class="form-control "
+      [(ngModel)]="customerService.query"
+      placeholder="Search"/>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="adminHome">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="goToProducts()">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="orderList">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="getAllCust">Customers</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="allPayments">Payments</a>
+      </li>
+      <li class="nav-item">
+
+        <nav>
+          <ul>
+            <li class="dropdown"><a style=" padding: 10px; ">MyAccount</a>
+              <ul class="dropdown-content">
+                <!-- <li><a style=" padding: 10px;padding-left: 5px;padding-right:
+                    5px;" routerLink="profile">Admin Profile</a></li> -->
+                <li class="dropdown-item"><a style=" padding: 5px;  "routerLink="registerAdmin">Add
+                    Admin</a></li>
+                <li class="dropdown-item"><a style=" padding: 10px; "(click)="user.logout()">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+
+
+        </nav>
+
+
+
+
+      </li>
+    </ul>
+
+
+  </div>
+
+
+</nav>
