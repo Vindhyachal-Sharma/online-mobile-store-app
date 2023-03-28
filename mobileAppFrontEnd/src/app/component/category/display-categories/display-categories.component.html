@@ -1,0 +1,24 @@
+<div class="card-top container-fluid"style="overflow-x: auto; ">
+  <div class="container d-flex">
+    <div class="item">
+
+      <a (click)="viewMobilesofCategory()">
+        <img
+          src="https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100"
+          alt="">
+        <h6>All Products </h6>
+      </a>
+    </div>
+
+    <div class="item align-items-center"*ngFor="let item of categoryList">
+
+      <a (click)="viewMobilesofCategory(item.id)">
+        <img
+          src="https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100"
+          alt="">
+        <h6 class="text-center">{{item.name}}</h6>
+      </a>
+    </div>
+
+  </div>
+</div>

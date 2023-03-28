@@ -1,0 +1,110 @@
+<div class="container mb-5">
+  <div class="row justify-content-center">
+    <div class="bg-light rounded">
+      <h1 class="text-center font-weight-bold text-primary">Add a
+        Mobile</h1>
+      <hr class="bg-light">
+      <h5 class="text-center text-success"></h5>
+
+
+      <form class="px-4 py-3" class="form-group" #addMobileForm="ngForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control"
+            id="name" name="name"
+            [(ngModel)]="mobile.mobileName"
+            #nameRef="ngModel" required
+            autofocus>
+          <div *ngIf="nameRef.invalid && (nameRef.dirty || nameRef.touched)">
+            <div *ngIf="nameRef.errors?.['required']" class="text-right
+              text-danger">Mobile name is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control"
+            id="price" name="price"
+            [(ngModel)]="mobile.mobileCost"
+            #priceRef="ngModel" required autofocus
+            pattern="^(0|[1-9]\d*)(\.\d+)?$">
+          <div *ngIf="priceRef.invalid && (priceRef.dirty || priceRef.touched)">
+            <div *ngIf="priceRef.errors?.['required']" class="text-right
+              text-danger">Price is required.</div>
+            <div *ngIf="priceRef.errors?.['pattern']" class="text-right
+              text-danger">Must be greater than zero</div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="MfdDate">Manufacture Date</label>
+          <input type="date" class="form-control"
+            id="MfdDate" name="MfdDate"
+            [(ngModel)]="mobile.mfd"
+            #dateRef="ngModel" required autofocus>
+          <div *ngIf="dateRef.invalid && (dateRef.dirty || dateRef.touched)">
+            <div *ngIf="dateRef.errors?.['required']" class="text-right
+              text-danger">Select a Manufacturing Date</div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="modelNumber">Model Number</label>
+          <input type="text" class="form-control"
+            id="modelNumber" name="modelNumber"
+            [(ngModel)]="mobile.modelNumber"
+            #modelRef="ngModel" required autofocus>
+          <div *ngIf="modelRef.invalid && (modelRef.dirty || modelRef.touched)">
+            <div *ngIf="modelRef.errors?.['required']" class="text-right
+              text-danger">Model Number is required.</div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="companyName">Company Name</label>
+          <input type="text" class="form-control"
+            id="companyName" name="companyName"
+            [(ngModel)]="mobile.companyName"
+            #CnameRef="ngModel" required pattern="^[a-zA-Z ]+$">
+          <div *ngIf="CnameRef.invalid && (CnameRef.dirty || CnameRef.touched)">
+            <div *ngIf="CnameRef.errors?.['required']" class="text-right
+              text-danger">Company Name is required.</div>
+            <div *ngIf="CnameRef.errors?.['pattern']" class="text-right
+              text-danger">Company Name can only contain letters and spaces</div>
+
+          </div>
+        </div>
+        <div class="form-outline mb-4">
+          <label class="form-label" for="description">Description</label>
+          <textarea type="text" id="description" class="form-control"
+            name="description" [(ngModel)]="mobile.description"
+            #addressRef="ngModel" required style="height: 50px;"
+            pattern="^[a-zA-Z0-9 ,@%&().]+$" >
+          </textarea>
+
+
+          <div *ngIf="addressRef.invalid && (addressRef.dirty ||
+            addressRef.touched)">
+
+            <div *ngIf="addressRef.errors?.['required']" class="text-right
+              text-danger">Description
+              required.</div>
+            <div *ngIf="addressRef.errors?.['pattern']" class="text-right
+              text-danger">Description can only contain letters,numbers,
+              spacesand symbols[,@%&()].</div>
+
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <input type="submit" name="submit" id="submit" class="btn
+            btn-primary btn-block"
+            value="Send"[disabled]="!addMobileForm.form.valid"
+            (click)="mobileAdded()">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,179 @@
+<ng-container *ngIf="products.length!=0">
+  <div class="container ">
+    <div class="row d-flex justify-content-center align-items-center
+      py-5">
+      <div class="col">
+        <div class="card">
+          <div class="card-body p-4">
+
+            <div class="row">
+
+              <div class="col-lg-7">
+                <h5 class="mb-3"><a routerLink="/products"
+                    class="text-body"><i class="fa fa-arrow-left"></i>
+                    Continue
+                    shopping</a></h5>
+                <hr>
+
+                <div class="d-flex justify-content-between
+                  align-items-center mb-4">
+                  <div>
+                    <p class="mb-1">Shopping cart</p>
+                    <p class="mb-0">You have
+                      {{cart.quantity}} items in
+                      your cart</p>
+                  </div>
+                  <a (click)="emptycart()"
+                    style="text-decoration: none ;color:
+                    #cecece;">
+                    <p class="mb-0"><span
+                        class="text-muted">Clear Cart
+                      </span>
+                      <i class="fas fa-trash-alt"></i></p>
+                  </a>
+                </div>
+
+                <div class="card mb-3"*ngFor="let item of
+                  cart.mobiles">
+                  <div class="card-body">
+                    <div class="d-flex
+                      justify-content-between">
+                      <div class="d-flex flex-row
+                        align-items-center">
+                        <div>
+                          <img
+                            src="https://m.media-amazon.com/images/I/41S59W1mu6S._SY300_SX300_.jpg"
+                            class="img-fluid
+                            rounded-3"
+                            alt="Shopping item"
+                            style="width:
+                            65px;">
+                        </div>
+                        <div class="ms-3">
+                          <h5>{{item.mobileName}}</h5>
+                          <p class="small mb-0">256GB,
+                            Navy Blue</p>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row
+                        align-items-center">
+                        <div style="width: 50px;">
+                          <h5 class="fw-normal
+                            mb-0">1</h5>
+                        </div>
+                        <div style="width: 80px;">
+                          <h5 class="mb-0"><i
+                              class="fa fa-inr"
+                              aria-hidden="true"></i>{{item.mobileCost}}</h5>
+                        </div>
+                        <a style="color:
+                          #cecece;"(click)="removeItem(item.mobileId)"><i
+                            class="fas
+                            fa-trash-alt"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Payment page html design -->
+              <div class="col-lg-5">
+
+                <div class="card bg-primary text-white
+                  rounded-3">
+                  <div class="card-body">
+                    <div class="d-flex
+                      justify-content-between
+                      align-items-center mb-4">
+                      <h5 class="mb-0">Payment details</h5>
+                    </div>
+
+                    <p class="small mb-2">Payment Mode</p>
+                    <select class="form-control mb-4"
+                      id="paymentMode"
+                      [(ngModel)]="payment.paymentMode"
+                      (click)=" paymentType()" autofocus>
+                      <option>COD</option>
+                      <option>UPI</option> </select>
+
+                    <p class="small mb-2">Payment Status</p>
+                    <input class="form-control" type="text"
+                      disabled
+                      value="{{payment.paymentStatus}}">
+                    <hr class="my-4">
+
+                    <div class="d-flex
+                      justify-content-between">
+                      <p class="mb-2">Subtotal</p>
+                      <p class="mb-2"><i class="fa fa-inr"
+                          aria-hidden="true"></i>{{cart.cost}}</p>
+                    </div>
+
+                    <div class="d-flex
+                      justify-content-between">
+                      <p class="mb-2">Shipping</p>
+                      <p class="mb-2"><i><i class="fa
+                            fa-inr"
+                            aria-hidden="true"></i></i>0</p>
+                    </div>
+
+                    <div class="d-flex
+                      justify-content-between mb-4">
+                      <p class="mb-2">Total(Incl.
+                        taxes)</p>
+                      <p class="mb-2"><i class="fa fa-inr"
+                          aria-hidden="true"></i>{{cart.cost}}</p>
+                    </div>
+
+                    <button type="button" class="btn
+                      btn-info btn-block btn-lg"
+                      [disabled]="payment.paymentMode==null"
+                      (click)="checkout()">
+                      <div class="d-flex
+                        justify-content-between">
+                        <span><i class="fa fa-inr"
+                            aria-hidden="true"></i>{{cart.cost}}</span>
+                        <span>Checkout <i class="fas
+                            fa-long-arrow-alt-right
+                            ms-2"></i></span>
+                      </div>
+                    </button>
+
+                  </div>
+                </div>
+
+              </div>
+              <!-- Payment page html design -->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div class="container" *ngIf="products.length==0">
+  <div class="card" style=" height: 80vh;
+    margin: 25px;
+    padding: 25px;">
+    <h5 class="cart-title">My Cart</h5>
+
+    <div class="center"
+      style=" text-align: center;">
+      <img
+        src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+        alt=""
+        style="text-decoration: none; color: inherit;border:
+        none;outline: none; height:162px; width:250px; margin:20px
+        0px;">
+      <h4 style="font-weight: 400;"> Your cart is empty!</h4>
+      <h6 style="font-weight: 400;"> Add item to it now</h6>
+      <button routerLink="/products" class="btn btn-primary"
+        style="font-size: 14px !important; margin-top: 20px !important;
+        font-weight: 400; padding: 12px 72px; border-radius: 3px
+        !important;">
+        Shop Now</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+.card-top.container-fluid::-webkit-scrollbar {
+  display: none;
+}
