@@ -1,0 +1,185 @@
+<div class="container">
+  <!-- Pills navs -->
+  <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link " id="tab-login" data-mdb-toggle="pill"
+        href="/login" role="tab"
+        aria-controls="pills-login" aria-selected="false">Login</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="tab-register" data-mdb-toggle="pill"
+        role="tab"
+        aria-controls="pills-register" aria-selected="true">Register</a>
+    </li>
+  </ul>
+  <!-- Pills navs -->
+
+  <div class="tab-pane fade show active" id="registration-form"
+    role="tabpanel">
+    <form class="form-group"
+      #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+      <div class="row ">
+        <!-- Name input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="registerName">Name<span style="color:red">*</span></label>
+          <input type="text" id="registerName" class="form-control"
+            name="registerName"
+            [(ngModel)]="customer.name"
+            #nameRef="ngModel" pattern="^[a-zA-Z ]{3,}$" required autofocus title="Name is required" />
+          <div *ngIf="nameRef.invalid && (nameRef.dirty || nameRef.touched)">
+            <div *ngIf="nameRef.errors?.['required']" class="text-right
+              text-danger">Name is required.</div>
+              <div *ngIf="nameRef.errors?.['pattern']" class="text-right
+              text-danger">Name may only contain characters,
+              and must be minimum 3 digits</div>
+          </div>
+
+
+        </div>
+
+        <!-- Username input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="registerUsername">Username<span style="color:red">*</span></label>
+          <input type="text" id="registerUsername"
+            class="form-control" name="registerUsername"
+            [(ngModel)]="customer.userName" pattern="^[a-zA-Z0-9_-]{3,}$"
+            #usernameRef="ngModel" required autofocus title="Username is
+            required" />
+
+          <div *ngIf="usernameRef.invalid && (usernameRef.dirty ||
+            usernameRef.touched)">
+            <div *ngIf="usernameRef.errors?.['required']"
+              class="text-right text-danger">Username is required.</div>
+            <div *ngIf="usernameRef.errors?.['pattern']" class="text-right
+              text-danger">Username may only contain alphanumeric characters,
+              underscores, and hyphens and must be minimum 3 digits</div>
+          </div>
+        </div>
+      </div>
+      <div class="row gutters">
+        <!-- Email input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="registerEmail">Email<span style="color:red">*</span></label>
+          <input type="email" id="registerEmail" class="form-control"
+            [(ngModel)]="customer.email"
+            #emailRef="ngModel" name="email" required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="Email Required">
+
+          <div *ngIf="emailRef.invalid && (emailRef.dirty || emailRef.touched)">
+            <div *ngIf="emailRef.errors?.['required']" class="text-right
+              text-danger">Email is required.</div>
+            <div *ngIf="emailRef.errors?.['pattern']" class="text-right
+              text-danger">Invalid Email.</div>
+          </div>
+        </div>
+
+        <!-- Mobile Number input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="registerMobNo">Mobile No<span style="color:red">*</span></label>
+          <input type="tel" id="registerMobNo"
+            class="form-control" name="registerMobNo"
+            [(ngModel)]="customer.mobileNo"
+            #mobRef="ngModel" required pattern="^[6-9]\d{9}$" title="Mobile
+            Number must be 10 digits"/>
+          <div class="form-label" *ngIf="mobRef.invalid &&
+            (mobRef.dirty || mobRef.touched)">
+            <div *ngIf="mobRef.errors?.['required']" class="text-right
+              text-danger">Mobile
+              number is required.</div>
+            <div *ngIf="mobRef.errors?.['pattern']" class="text-right
+              text-danger">Please enter a valid mobile number.</div>
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+        <!-- Password input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4">
+          <label class="form-label" for="Password">Password<span title="Password is required." style="color:red">*</span></label>
+          <input type="password" id="password"
+            class="form-control" name="password"
+            [(ngModel)]="customer.password"
+            #pwdRef="ngModel"
+            required autofocus
+            pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$"
+            title="Password must contain at least one digit, one lowercase, one
+            uppercase letter, one special symbol (@#$%^&+=) and no whitespace"
+            />
+          <div class="form-label" *ngIf="pwdRef.invalid &&
+            (pwdRef.dirty || pwdRef.touched)">
+
+            <div *ngIf="pwdRef.errors?.['required']"
+              class="text-right text-danger">Password
+              is required.</div>
+            <div *ngIf="pwdRef.errors?.['pattern']"
+              class="text-right text-danger">Password must contain at least one
+              digit, one lowercase, one uppercase letter, one special symbol
+              (@#$%^&+=) and no whitespace
+              .</div>
+          </div>
+
+        </div>
+
+        <!-- Repeat Password input -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12
+          mb-4">
+          <label class="form-label" for="confirm-password">Confirm
+            password<span style="color:red">*</span></label>
+          <input type="password" id="confirm-password"
+            class="form-control" name="confirm-password"
+            [(ngModel)]="confirmPassword"
+            #passwordRef="ngModel"
+            autofocus required
+            pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,20}$"
+            title="Password must contain at least one digit, one lowercase, one
+            uppercase letter, one special symbol (@#$%^&+=) and no whitespace"
+            />
+          <div class="form-label" *ngIf="passwordRef.invalid &&
+            (passwordRef.dirty || passwordRef.touched)">
+
+            <div *ngIf="passwordRef.errors?.['required']"
+              class="text-right text-danger">Password
+              is required.</div>
+
+            <div *ngIf="customer.password!=confirmPassword &&(customer.password)?.length !==(confirmPassword)?.length"
+              class="text-right text-danger">Password Mismatch.</div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="form-outline mb-4">
+        <label class="form-label" for="address">Address<span title="Address required." style="color:red">*</span></label>
+        <textarea type="text" id="address" class="form-control"
+          name="address" [(ngModel)]="customer.address"
+          #addressRef="ngModel" pattern="^(?=.{3,255}$).*" required style="height: 50px;" > </textarea>
+
+
+        <div *ngIf="addressRef.invalid && (addressRef.dirty ||
+          addressRef.touched)">
+
+          <div *ngIf="addressRef.errors?.['required']"
+            class="text-right text-danger">Address
+            required.</div>
+            <div *ngIf="addressRef.errors?.['pattern']"
+              class="text-right text-danger">Address must be minumum 3 and maximum 255 Characters.
+              .</div>
+        </div>
+      </div>
+
+      <!-- Checkbox
+      <div class="form-check d-flex mb-4">
+        <input class="form-check-input" type="checkbox"
+          id="registerCheck" unchecked
+          aria-describedby="registerCheckHelpText" value="yes" required />
+        <label class="form-check-label" for="registerCheck">
+          I have read and agree to the terms
+        </label>
+      </div> -->
+
+      <button type="submit" class="btn btn-primary btn-block mb-3"
+        >Sign
+        up</button>
+    </form>
+  </div>
+</div>
